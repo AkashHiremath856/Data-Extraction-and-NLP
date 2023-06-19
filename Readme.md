@@ -1,34 +1,36 @@
 # Data Extraction and NLP
 
-# Note - `Few web pages where not found during analysis.`
+This project aims to extract textual data articles from given URLs and perform text analysis to compute variables. The code is written in Jupyter Notebook for its flexibility compared to scripting.
 
-# The coding was done in jupyter because is flexibility compare to scripting.
+## Prerequisites
 
-# Run `requirments.txt` first using `python3 install -r requirements.txt` then run jupyter file
+Before running the code, make sure to install the required packages by running the following command:
 
-### The objective of this assignment is to extract textual data articles from the given URL and perform text analysis to compute variables.
+```bash
+python3 install -r requirements.txt
+```
 
-### Here pandas is used to read excel input given and export the results to `Output  Data Structure.xlsx`.
+## Approach
 
-### Request module is used to get raw html from the `URL` which are availabe within `input.xlsx`.
+The project follows the following steps:
 
-### BeautifulSoup module of python is used for `web Scraping`.
+- input data: Read input data from input.xlsx using pandas.
+- Web Scraping: Use the requests module to get the raw HTML content from the URLs specified in the input file.
+  Utilize the BeautifulSoup module to perform web scraping.
+- Find the title of the article using the `<h1>` tag and obtain the content using the `<div>` tag and class name selectors.
+- Since different articles may have different class selectors, try-except blocks are used to handle any exceptions.
+- Text Analysis: Perform text analysis using the NLTK library.
+- Use the Punkt tokenizer to divide the text into sentences using the sent_tokenize function.
+- Remove stop words (common words like 'the', 'and', 'I', etc.) using the NLTK stopwords module.
+- Tokenize the text into words using the word_tokenize function.
+- Estimate the number of syllables using a simple syllable estimator.
+- Compute Variables: Compute the required variables by looping through multiple URLs and performing various calculations.
+- Store Results: Store the variables in lists and insert them into a dictionary with the specified column names.
+- Export Results: Export the results to Output Data Structure.xlsx.
 
-### NLTK Punkt - This tokenizer divides a text into a list of sentences by using an unsupervised algorithm to build a model for abbreviation words.
+## Output
 
-### NLTK stopwords - Stop words are common words like ‘the’, ‘and’, ‘I’, etc. that are very frequent in text, and so don’t convey insights into the specific topic of a document. We can remove these stop words from the text in a given corpus to clean up the data.
+The output file Output Data Structure.xlsx will contain the computed variables for each article.
 
-### word_tokenize - splits a given sentence into words.
-
-### sent_tokenize - split a document or paragraph into sentences.
-
-### syllables - simple syllable estimator
-
-### web scraping using requests and BeatifulSoap :
-
-- finding title of article by h1 tag and obtain content using div tag, class name selectors.
-- since different articles have different class selector used try exception to get element
-
-# Obtaining all the variables
-
-### By looping through multiple `URLS` we obtain variables by performing various calculations and is stored into list's. The list is inserted into dictionary with the columns as instructed.
+Note: During the analysis, a few web pages were not found and couldn't be scraped.
+Please refer to the code file in the Jupyter Notebook format for a detailed implementation.
